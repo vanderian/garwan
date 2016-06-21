@@ -3,10 +3,12 @@ package sk.vander.garwan;
 import android.app.Application;
 import android.content.Context;
 
+import com.orm.SugarApp;
+
 /**
  * Created by arashid on 21/06/16.
  */
-public class App extends Application {
+public class App extends SugarApp {
   private AppComponent appComponent;
 
   @Override public void onCreate() {
