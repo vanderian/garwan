@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="sk.vander.garwan">
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="sk.vander.garwan">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:name=".App"
@@ -17,10 +20,18 @@
             </intent-filter>
         </activity>
 
-        <meta-data android:name="DATABASE" android:value="meals.db" />
-        <meta-data android:name="VERSION" android:value="1" />
-        <meta-data android:name="QUERY_LOG" android:value="true" />
-        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="sk.vander.garwan.data.model" />
+        <meta-data
+            android:name="DATABASE"
+            android:value="meals.db"/>
+        <meta-data
+            android:name="VERSION"
+            android:value="1"/>
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="true"/>
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="sk.vander.garwan.data.model"/>
 
     </application>
 

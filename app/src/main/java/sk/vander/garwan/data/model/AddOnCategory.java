@@ -11,16 +11,20 @@ import java.util.List;
  * Created by arashid on 21/06/16.
  */
 @Table
-public class MealCategory {
+public class AddOnCategory {
   transient Long id;
   @SerializedName("id") @Column(name = "str_id", unique = true) String strId;
   String name;
-  @Ignore transient List<Meal> meals;
+  @Ignore transient List<AddOn> addOnList;
 
-  public MealCategory() {}
+  public AddOnCategory() {}
 
-  public void setMeals(List<Meal> meals) {
-    this.meals = meals;
+  public void setAddOnList(List<AddOn> addOns) {
+    addOnList = addOns;
+  }
+
+  public Long getId() {
+    return id;
   }
 
   public String getStrId() {
@@ -31,7 +35,7 @@ public class MealCategory {
     return name;
   }
 
-  public Long getId() {
-    return id;
+  public List<AddOn> getAddOnList() {
+    return addOnList;
   }
 }
