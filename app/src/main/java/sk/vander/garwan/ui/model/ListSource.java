@@ -3,32 +3,33 @@ package sk.vander.garwan.ui.model;
 import java.util.Collections;
 import java.util.List;
 
+import sk.vander.garwan.R;
 import sk.vander.garwan.ui.adapter.ExpandableSource;
 
 /**
  * Created by arashid on 23/06/16.
  */
-public class ListSource implements ExpandableSource<ListGroupItem, ListDetailItem> {
-  private List<ListGroupItem> groupItems = Collections.emptyList();
+public class ListSource implements ExpandableSource<GroupItem, DetailItem> {
+  private List<GroupItem> groupItems = Collections.emptyList();
 
-  public void setGroupItems(List<ListGroupItem> groupItems) {
+  public void setGroupItems(List<GroupItem> groupItems) {
     this.groupItems = groupItems;
   }
 
-  @Override public ListGroupItem getGroupItem(int groupPosition) {
+  @Override public GroupItem getGroupItem(int groupPosition) {
     return groupItems.get(groupPosition);
   }
 
-  @Override public ListDetailItem getChildItem(int groupPosition, int childPosition) {
+  @Override public DetailItem getChildItem(int groupPosition, int childPosition) {
     return getGroupItem(groupPosition).items().get(childPosition);
   }
 
   @Override public int getGroupLayoutRes(int viewType) {
-    return 0;
+    return R.layout.view_item_group;
   }
 
   @Override public int getChildLayoutRes(int viewType) {
-    return 0;
+    return R.layout.view_item_detail;
   }
 
   @Override public int getGroupCount() {

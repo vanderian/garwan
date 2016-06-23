@@ -7,8 +7,9 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import sk.vander.garwan.ui.adapter.ExpandableAdapter;
-import sk.vander.garwan.ui.model.ListDetailItem;
-import sk.vander.garwan.ui.model.ListGroupItem;
+import sk.vander.garwan.ui.adapter.ExpandableSource;
+import sk.vander.garwan.ui.model.DetailItem;
+import sk.vander.garwan.ui.model.GroupItem;
 import sk.vander.garwan.ui.model.ListSource;
 
 /**
@@ -27,7 +28,11 @@ public class AppModule {
     return application;
   }
 
-  @Provides @Singleton ExpandableAdapter<ListGroupItem, ListDetailItem> providesAdpater() {
-    return new ExpandableAdapter<>(new ListSource());
+  @Provides @Singleton ExpandableSource<GroupItem, DetailItem> providesSource() {
+    return new ListSource();
+  }
+
+  @Provides @Singleton ExpandableAdapter<GroupItem, DetailItem> providesAdpater(ExpandableSource<GroupItem, DetailItem> s) {
+    return new ExpandableAdapter<>(s);
   }
 }

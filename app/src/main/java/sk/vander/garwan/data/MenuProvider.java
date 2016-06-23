@@ -22,6 +22,7 @@ import sk.vander.garwan.data.model.MealCategories;
 import sk.vander.garwan.data.model.MealCategory;
 import sk.vander.garwan.data.model.Meals;
 import sk.vander.garwan.data.service.MenuService;
+import sk.vander.garwan.ui.model.GroupItem;
 
 /**
  * Created by arashid on 21/06/16.
@@ -62,10 +63,10 @@ public class MenuProvider {
         .onErrorResumeNext(Observable.just(false));
   }
 
-  public Observable<List<MealCategory>> getMeals() {
+  public Observable<List<GroupItem>> getMeals() {
     return refresh.map(x -> SugarRecord.listAll(MealCategory.class))
         .flatMap(l -> Observable.from(l)
-            .doOnNext(mc -> mc.setMeals(SugarRecord.find(Meal.class, "cat_id = ?", mc.getStrId())))
+            .map(mc -> GroupItem.create(l.indexOf(mc), mc, SugarRecord.find(Meal.class, "cat_id = ?", mc.getStrId())))
             .toList());
   }
 
