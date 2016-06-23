@@ -43,6 +43,8 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.0.0'
+    compile 'com.android.support:recyclerview-v7:24.0.0'
+
     compile 'com.jakewharton.timber:timber:4.1.2'
 
     apt 'com.google.dagger:dagger-compiler:2.2'
@@ -52,10 +54,14 @@ dependencies {
     compile 'io.reactivex:rxkotlin:0.60.0'
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'io.reactivex:rxjava:1.1.6'
+    compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
 
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
 
     compile 'com.github.satyan:sugar:1.5'
+
+    compile 'me.tatarka:auto-parcel-gson:0.1'
+    apt 'me.tatarka:auto-parcel-gson-processor:0.1'
 }

@@ -10,4 +10,12 @@ public class ServingSize extends SugarRecord {
   String price;
 
   public ServingSize() {}
+
+  public String getSize() {
+    return size;
+  }
+
+  public String getPrice() {
+    return price;
+  }
 }

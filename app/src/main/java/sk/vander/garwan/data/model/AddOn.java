@@ -17,7 +17,8 @@ public class AddOn {
   String catId;
   @Ignore AddOnCategory category;
 
-  public AddOn() {}
+  public AddOn() {
+  }
 
   public Long getId() {
     return id;
@@ -30,5 +31,13 @@ public class AddOn {
 
   public String getStrId() {
     return strId;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public ServingSize getServingSize() {
+    return servingSize;
   }
 }

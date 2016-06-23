@@ -39,4 +39,12 @@ public class Meal {
     addOnIdsJoined = TextUtils.join(",", addOnIds);
     catId = category.getStrId();
   }
+
+  public String getName() {
+    return name;
+  }
+
+  public ServingSize getServingSize() {
+    return servingSize;
+  }
 }
