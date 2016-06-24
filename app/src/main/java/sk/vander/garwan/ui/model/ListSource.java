@@ -1,5 +1,7 @@
 package sk.vander.garwan.ui.model;
 
+import android.support.annotation.NonNull;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -12,8 +14,12 @@ import sk.vander.garwan.ui.adapter.ExpandableSource;
 public class ListSource implements ExpandableSource<GroupItem, DetailItem> {
   private List<GroupItem> groupItems = Collections.emptyList();
 
-  public void setGroupItems(List<GroupItem> groupItems) {
-    this.groupItems = groupItems;
+  public boolean setGroupItems(@NonNull List<GroupItem> groupItems) {
+    if (!groupItems.equals(this.groupItems)) {
+      this.groupItems = groupItems;
+      return true;
+    }
+    return false;
   }
 
   @Override public GroupItem getGroupItem(int groupPosition) {

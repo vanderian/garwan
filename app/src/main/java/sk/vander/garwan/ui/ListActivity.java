@@ -58,6 +58,7 @@ public abstract class ListActivity extends AppCompatActivity {
             .subscribe(groupItemView -> groupItemView.showDivider(pos != 0));
       }
     });
+    swipeRefreshLayout.setColorSchemeResources(R.color.green_500, R.color.amber_500, R.color.indigo_500, R.color.red_500);
   }
 
   @Override protected void onSaveInstanceState(Bundle outState) {
@@ -69,7 +70,8 @@ public abstract class ListActivity extends AppCompatActivity {
     super.onResume();
     subscription.add(getItemsObservable()
         .observeOn(AndroidSchedulers.mainThread())
-        .doOnNext(source::setGroupItems)
+        .map(source::setGroupItems)
+        .filter(Boolean::booleanValue)
         .doOnNext(x -> adapter.rebuildPositionTranslator())
         .doOnNext(x -> adapter.notifyDataSetChanged())
         .subscribe());
