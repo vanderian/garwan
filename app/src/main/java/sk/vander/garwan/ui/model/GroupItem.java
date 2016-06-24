@@ -4,10 +4,10 @@ import java.util.List;
 
 import auto.parcelgson.AutoParcelGson;
 import rx.Observable;
-import sk.vander.garwan.data.model.AddOn;
-import sk.vander.garwan.data.model.AddOnCategory;
-import sk.vander.garwan.data.model.Meal;
-import sk.vander.garwan.data.model.MealCategory;
+import sk.vander.garwan.data.database.model.AddOnDao;
+import sk.vander.garwan.data.database.model.AddOnCategoryDao;
+import sk.vander.garwan.data.database.model.MealDao;
+import sk.vander.garwan.data.database.model.MealCategoryDao;
 import sk.vander.garwan.ui.adapter.ExpandGroupItem;
 
 /**
@@ -18,13 +18,13 @@ public abstract class GroupItem extends ExpandGroupItem {
   public abstract String name();
   public abstract List<DetailItem> items();
 
- public static GroupItem create(long id, MealCategory mc, List<Meal> meals) {
-   return new AutoParcelGson_GroupItem(id, mc.getName(),
-       Observable.from(meals).map(DetailItem::create).toList().toBlocking().first());
+ public static GroupItem create(MealCategoryDao mc, List<MealDao> mealDaos) {
+   return new AutoParcelGson_GroupItem(mc.getId(), mc.getName(),
+       Observable.from(mealDaos).map(DetailItem::create).toList().toBlocking().first());
  }
 
- public static GroupItem create(long id, AddOnCategory ac, List<AddOn> addOns) {
-   return new AutoParcelGson_GroupItem(id, ac.getName(),
-       Observable.from(addOns).map(DetailItem::create).toList().toBlocking().first());
+ public static GroupItem create(AddOnCategoryDao ac, List<AddOnDao> addOnDaos) {
+   return new AutoParcelGson_GroupItem(ac.getId(), ac.getName(),
+       Observable.from(addOnDaos).map(DetailItem::create).toList().toBlocking().first());
  }
 }

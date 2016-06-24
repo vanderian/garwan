@@ -22,16 +22,16 @@
 
         <meta-data
             android:name="DATABASE"
-            android:value="meals.db"/>
+            android:value="mealDaos.db"/>
         <meta-data
             android:name="VERSION"
-            android:value="1"/>
+            android:value="2"/>
         <meta-data
             android:name="QUERY_LOG"
             android:value="true"/>
         <meta-data
             android:name="DOMAIN_PACKAGE_NAME"
-            android:value="sk.vander.garwan.data.model"/>
+            android:value="sk.vander.garwan.data.database.model"/>
 
     </application>
 

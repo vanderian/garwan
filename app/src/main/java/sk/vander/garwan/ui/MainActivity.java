@@ -9,6 +9,7 @@ import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.subscriptions.CompositeSubscription;
 import sk.vander.garwan.App;
 import sk.vander.garwan.R;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     ButterKnife.bind(this);
 
     recyclerView.setAdapter(adapter);
+    recyclerView.setHasFixedSize(true);
 
 //    menuProvider.fetchMenuData().filter(Boolean::booleanValue)
 //        .subscribe(b -> {}, Throwable::printStackTrace);
@@ -50,10 +52,16 @@ public class MainActivity extends AppCompatActivity {
 
   @Override protected void onResume() {
     super.onResume();
-    subscription.add(menuProvider.getMeals().subscribe(source::setGroupItems));
+    subscription.add(menuProvider.getMeals()
+        .observeOn(AndroidSchedulers.mainThread())
+        .doOnNext(source::setGroupItems)
+        .doOnNext(x -> adapter.rebuildPositionTranslator())
+        .doOnNext(x -> adapter.notifyDataSetChanged())
+        .subscribe());
     subscription.add(SwipeRefreshObservable.create(swipeRefreshLayout)
         .concatMap(x -> menuProvider.fetchMenuData())
-        .subscribe());
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(x -> swipeRefreshLayout.setRefreshing(false)));
   }
 
   @Override protected void onPause() {

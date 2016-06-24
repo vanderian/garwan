@@ -1,8 +1,10 @@
 package sk.vander.garwan.ui.model;
 
+import java.math.BigDecimal;
+
 import auto.parcelgson.AutoParcelGson;
-import sk.vander.garwan.data.model.AddOn;
-import sk.vander.garwan.data.model.Meal;
+import sk.vander.garwan.data.database.model.AddOnDao;
+import sk.vander.garwan.data.database.model.MealDao;
 
 /**
  * Created by arashid on 23/06/16.
@@ -10,15 +12,15 @@ import sk.vander.garwan.data.model.Meal;
 @AutoParcelGson
 public abstract class DetailItem {
   public abstract String name();
-  public abstract String price();
+  public abstract BigDecimal price();
   public abstract String size();
   public abstract long getId();
 
-  public static DetailItem create(Meal meal) {
-    return new AutoParcelGson_DetailItem(meal.getName(), meal.getServingSize().getPrice(), meal.getServingSize().getSize(), meal.getId());
+  public static DetailItem create(MealDao mealDao) {
+    return new AutoParcelGson_DetailItem(mealDao.getName(), mealDao.getServingSizeDao().getPrice(), mealDao.getServingSizeDao().getSize(), mealDao.getId());
   }
 
-  public static DetailItem create(AddOn addOn) {
-    return new AutoParcelGson_DetailItem(addOn.getName(), addOn.getServingSize().getPrice(), addOn.getServingSize().getSize(), addOn.getId());
+  public static DetailItem create(AddOnDao addOnDao) {
+    return new AutoParcelGson_DetailItem(addOnDao.getName(), addOnDao.getServingSizeDao().getPrice(), addOnDao.getServingSizeDao().getSize(), addOnDao.getId());
   }
 }
