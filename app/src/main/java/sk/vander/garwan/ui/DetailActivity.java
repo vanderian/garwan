@@ -24,7 +24,7 @@ import sk.vander.garwan.ui.model.GroupItem;
 import sk.vander.garwan.ui.model.ListSource;
 import sk.vander.garwan.ui.view.GroupItemView;
 
-public class MainActivity extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity {
   private final CompositeSubscription subscription = new CompositeSubscription();
   private final ListSource source = new ListSource();
   private final ExpandableAdapter<GroupItem, DetailItem> adapter = new ExpandableAdapter<>(source);
@@ -53,10 +53,6 @@ public class MainActivity extends AppCompatActivity {
             .subscribe(groupItemView ->  groupItemView.showDivider(pos != 0));
       }
     });
-
-//    menuProvider.getAddons("5531184695ea165d5f62f809,5531184695ea165d5f62f828").subscribe(a -> Timber.d(a.toString()));
-
-
   }
 
   @Override protected void onResume() {

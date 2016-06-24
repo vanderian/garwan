@@ -4,22 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp"
+    android:layout_marginLeft="8dp"
+    android:background="?attr/selectableItemBackground"
+    android:padding="16dp"
     >
-
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="name"
-        />
 
     <TextView
         android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
         tools:text="300e"
         />
 
@@ -27,11 +22,20 @@
         android:id="@+id/size"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
         android:layout_marginRight="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_toLeftOf="@id/price"
-        android:layout_toStartOf="@id/price"
         tools:text="300l"
+        />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_toLeftOf="@id/size"
+        android:gravity="left"
+        tools:text="name name name name name name name name"
         />
 
 </sk.vander.garwan.ui.view.DetailItemView>
