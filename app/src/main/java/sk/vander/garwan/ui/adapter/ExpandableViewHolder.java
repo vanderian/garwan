@@ -18,29 +18,29 @@ package sk.vander.garwan.ui.adapter;
 
 /**
  * Interface which provides required information for expanding item.
- *
+ * <p>
  * Implement this interface on your sub-class of the {@link android.support.v7.widget.RecyclerView.ViewHolder}.
  */
 public interface ExpandableViewHolder {
-    /**
-     * Sets the state flags value for expanding item
-     *
-     * @param flags Bitwise OR of these flags;
-     *              - {@link ExpandableAdapter#STATE_FLAG_IS_GROUP}
-     *              - {@link ExpandableAdapter#STATE_FLAG_IS_CHILD}
-     *              - {@link ExpandableAdapter#STATE_FLAG_IS_EXPANDED}
-     *              - {@link ExpandableAdapter#STATE_FLAG_IS_UPDATED}
-     */
-    void setExpandStateFlags(int flags);
+  /**
+   * Sets the state flags value for expanding item
+   *
+   * @param flags Bitwise OR of these flags;
+   *              - {@link ExpandableAdapter#STATE_FLAG_IS_GROUP}
+   *              - {@link ExpandableAdapter#STATE_FLAG_IS_CHILD}
+   *              - {@link ExpandableAdapter#STATE_FLAG_IS_EXPANDED}
+   *              - {@link ExpandableAdapter#STATE_FLAG_IS_UPDATED}
+   */
+  void setExpandStateFlags(int flags);
 
-    /**
-     * Gets the state flags value for expanding item
-     *
-     * @return  Bitwise OR of these flags;
-     *              - {@link ExpandableAdapter#STATE_FLAG_IS_GROUP}
-     *              - {@link ExpandableAdapter#STATE_FLAG_IS_CHILD}
-     *              - {@link ExpandableAdapter#STATE_FLAG_IS_EXPANDED}
-     *              - {@link ExpandableAdapter#STATE_FLAG_IS_UPDATED}
-     */
-    int getExpandStateFlags();
+  /**
+   * Gets the state flags value for expanding item
+   *
+   * @return Bitwise OR of these flags;
+   * - {@link ExpandableAdapter#STATE_FLAG_IS_GROUP}
+   * - {@link ExpandableAdapter#STATE_FLAG_IS_CHILD}
+   * - {@link ExpandableAdapter#STATE_FLAG_IS_EXPANDED}
+   * - {@link ExpandableAdapter#STATE_FLAG_IS_UPDATED}
+   */
+  int getExpandStateFlags();
 }

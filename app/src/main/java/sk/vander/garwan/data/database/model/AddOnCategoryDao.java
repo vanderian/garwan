@@ -12,7 +12,8 @@ public class AddOnCategoryDao extends SugarRecord {
   @Column(name = "uid", unique = true) String uid;
   String name;
 
-  public AddOnCategoryDao() {}
+  public AddOnCategoryDao() {
+  }
 
   public AddOnCategoryDao(AddOnCategory addOnCategory) {
     name = addOnCategory.name();

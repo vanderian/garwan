@@ -17,7 +17,8 @@ public class MealDao extends SugarRecord {
   ServingSizeDao servingSizeDao;
   String catUid;
 
-  public MealDao() {}
+  public MealDao() {
+  }
 
   public MealDao(Meal meal) {
     this.uid = meal.id();

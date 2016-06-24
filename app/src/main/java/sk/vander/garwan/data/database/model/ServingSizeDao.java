@@ -13,7 +13,8 @@ public class ServingSizeDao extends SugarRecord {
   String size;
   BigDecimal price;
 
-  public ServingSizeDao() {}
+  public ServingSizeDao() {
+  }
 
   public ServingSizeDao(ServingSize servingSize) {
     size = servingSize.size();

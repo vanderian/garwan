@@ -12,7 +12,8 @@ public class MealCategoryDao extends SugarRecord {
   @Column(name = "uid", unique = true) String uid;
   String name;
 
-  public MealCategoryDao() {}
+  public MealCategoryDao() {
+  }
 
   public MealCategoryDao(MealCategory mealCategory) {
     uid = mealCategory.id();

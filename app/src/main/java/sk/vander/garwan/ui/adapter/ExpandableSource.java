@@ -6,25 +6,25 @@ import android.support.annotation.LayoutRes;
  * Created by vander on 5/15/15.
  */
 public interface ExpandableSource<G, CH> {
-    G getGroupItem(int groupPosition);
+  G getGroupItem(int groupPosition);
 
-    CH getChildItem(int groupPosition, int childPosition);
+  CH getChildItem(int groupPosition, int childPosition);
 
-    @LayoutRes int getGroupLayoutRes(int viewType);
+  @LayoutRes int getGroupLayoutRes(int viewType);
 
-    @LayoutRes int getChildLayoutRes(int viewType);
+  @LayoutRes int getChildLayoutRes(int viewType);
 
-    int getGroupCount();
+  int getGroupCount();
 
-    int getChildCount(int groupPosition);
+  int getChildCount(int groupPosition);
 
-    long getGroupId(int groupPosition);
+  long getGroupId(int groupPosition);
 
-    long getChildId(int groupPosition, int childPosition);
+  long getChildId(int groupPosition, int childPosition);
 
-    int getGroupItemViewType(int groupPosition);
+  int getGroupItemViewType(int groupPosition);
 
-    int getChildItemViewType(int groupPosition, int childPosition);
+  int getChildItemViewType(int groupPosition, int childPosition);
 
 //    boolean onHookGroupExpand(int groupPosition, boolean fromUser);
 

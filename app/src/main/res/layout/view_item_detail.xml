@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
         tools:text="300e"
         />
 
@@ -22,20 +23,21 @@
         android:id="@+id/size"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_marginRight="8dp"
-        android:layout_toLeftOf="@id/price"
+        android:layout_below="@+id/name"
         tools:text="300l"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         />
 
     <TextView
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="8dp"
-        android:layout_toLeftOf="@id/size"
+        android:layout_marginRight="16dp"
+        android:layout_toLeftOf="@+id/price"
         android:gravity="left"
-        tools:text="name name name name name name name name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        tools:text="name name name name name name name name name"
         />
 
 </sk.vander.garwan.ui.view.DetailItemView>

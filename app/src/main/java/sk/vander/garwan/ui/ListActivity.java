@@ -55,7 +55,7 @@ public abstract class ListActivity extends AppCompatActivity {
         final int pos = parent.getChildAdapterPosition(view);
         Observable.just(view)
             .ofType(GroupItemView.class)
-            .subscribe(groupItemView ->  groupItemView.showDivider(pos != 0));
+            .subscribe(groupItemView -> groupItemView.showDivider(pos != 0));
       }
     });
   }

@@ -18,6 +18,8 @@ public interface AppComponent extends AppGraph {
           .appModule(new AppModule(app))
           .build();
     }
-    private Initializer() {} // No instances.
+
+    private Initializer() {
+    } // No instances.
   }
 }
