@@ -3,6 +3,8 @@ package sk.vander.garwan.data;
 import com.fernandocejas.frodo.annotation.RxLogObservable;
 import com.orm.SugarRecord;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -26,6 +28,7 @@ public class MenuProvider {
 
   private final MenuService menuService;
   private final BehaviorSubject<Boolean> refresh = BehaviorSubject.create(Boolean.TRUE);
+  private final BehaviorSubject<String> selectedIds = BehaviorSubject.create();
 
   @Inject public MenuProvider(MenuService menuService) {
     this.menuService = menuService;
@@ -49,30 +52,30 @@ public class MenuProvider {
         .onErrorResumeNext(Observable.just(false));
   }
 
-  // consider .sample() instead
-  public Observable<List<GroupItem>> getMeals() {
-    return refresh.map(x -> SugarRecord.listAll(MealCategoryDao.class))
-        .flatMap(l -> Observable.from(l)
-            .map(mc -> GroupItem.create(mc, SugarRecord.find(MealDao.class, "cat_uid = ?", mc.getUid())))
-            .toList());
+  public BehaviorSubject<String> getSelectedIds() {
+    return selectedIds;
   }
 
-/*
-  public Observable<List<AddOnCategoryDao>> getAddons(String ids) {
-    final List<String> idsList = Arrays.asList(ids.split(","));
-    return refresh.map(x -> SugarRecord.listAll(AddOnCategoryDao.class))
-        .flatMap(l -> Observable.from(l)
-            .doOnNext(ac -> ac.setAddOnDaoList(getFilteredAddons(ac.getStrId(), idsList)))
-            .filter(ac -> !ac.getAddOnDaoList().isEmpty())
+  public Observable<List<GroupItem>> getMeals() {
+    return refresh.flatMap(l -> Observable.from(SugarRecord.listAll(MealCategoryDao.class))
+        .map(mc -> GroupItem.create(mc, SugarRecord.find(MealDao.class, "cat_uid = ?", mc.getUid())))
+        .toList());
+  }
+
+  public Observable<List<GroupItem>> getAddons() {
+    return Observable.combineLatest(refresh, selectedIds, (b, ids) -> ids)
+        .map(s -> Arrays.asList(s.split(",")))
+        .flatMap(ids -> Observable.from(SugarRecord.listAll(AddOnCategoryDao.class))
+            .map(ac -> GroupItem.create(ac, getFilteredAddons(ac.getUid(), ids)))
+            .filter(ac -> !ac.items().isEmpty())
             .toList());
   }
 
   private List<AddOnDao> getFilteredAddons(String id, List<String> ids) {
-    return Observable.from(SugarRecord.find(AddOnDao.class, "cat_id = ?", id))
-        .filter(addOn -> ids.contains(addOn.getStrId()))
+    return Observable.from(SugarRecord.find(AddOnDao.class, "cat_uid = ?", id))
+        .filter(addOn -> ids.contains(addOn.getUid()))
         .toList()
         .toBlocking()
         .firstOrDefault(Collections.emptyList());
   }
-*/
 }

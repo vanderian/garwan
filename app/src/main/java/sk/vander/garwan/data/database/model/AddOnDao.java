@@ -28,8 +28,8 @@ public class AddOnDao extends SugarRecord {
     return name;
   }
 
-  public String getCatUid() {
-    return catUid;
+  public String getUid() {
+    return uid;
   }
 
   public ServingSizeDao getServingSizeDao() {

@@ -1,16 +1,13 @@
 package sk.vander.garwan;
 
+import android.app.Activity;
 import android.app.Application;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import sk.vander.garwan.ui.adapter.ExpandableAdapter;
-import sk.vander.garwan.ui.adapter.ExpandableSource;
-import sk.vander.garwan.ui.model.DetailItem;
-import sk.vander.garwan.ui.model.GroupItem;
-import sk.vander.garwan.ui.model.ListSource;
+import sk.vander.garwan.navigation.activity.ActivityScreenSwitcher;
 
 /**
  * Created by arashid on 21/06/16.
@@ -28,11 +25,22 @@ public class AppModule {
     return application;
   }
 
-  @Provides @Singleton ExpandableSource<GroupItem, DetailItem> providesSource() {
-    return new ListSource();
+  @Provides @Singleton ActivityScreenSwitcher provideActivityScreenSwitcher() {
+    return new ActivityScreenSwitcher();
   }
 
-  @Provides @Singleton ExpandableAdapter<GroupItem, DetailItem> providesAdpater(ExpandableSource<GroupItem, DetailItem> s) {
-    return new ExpandableAdapter<>(s);
+  @Provides @Singleton
+  ActivityHierarchyServer provideActivityScreenSwitcherServer(final ActivityScreenSwitcher screenSwitcher) {
+    return new ActivityHierarchyServer.Empty() {
+      @Override
+      public void onActivityStarted(Activity activity) {
+        screenSwitcher.attach(activity);
+      }
+
+      @Override
+      public void onActivityStopped(Activity activity) {
+        screenSwitcher.detach();
+      }
+    };
   }
 }

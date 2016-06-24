@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.orm.SugarApp;
 
+import javax.inject.Inject;
+
 import timber.log.Timber;
 
 /**
@@ -11,15 +13,17 @@ import timber.log.Timber;
  */
 public class App extends SugarApp {
   private AppComponent appComponent;
+  @Inject ActivityHierarchyServer activityHierarchyServer;
 
   @Override public void onCreate() {
     super.onCreate();
 
     Timber.plant(new Timber.DebugTree());
 
-    appComponent = DaggerAppComponent.builder()
-//        .appModule(new AppModule(this))
-        .build();
+    appComponent = AppComponent.Initializer.init(this);
+    appComponent.inject(this);
+
+    registerActivityLifecycleCallbacks(activityHierarchyServer);
   }
 
   public static AppComponent getComponent(Context context) {

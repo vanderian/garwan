@@ -6,6 +6,9 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import rx.Observable;
@@ -44,7 +47,7 @@ public class DetailItemView extends RelativeLayout implements BindableView<Detai
 
   @Override public void bindTo(DetailItem item) {
     name.setText(item.name());
-    price.setText(item.price().toPlainString());
+    price.setText(NumberFormat.getCurrencyInstance(new Locale("sk", "SK")).format(item.price()));
     size.setText(item.size());
   }
 

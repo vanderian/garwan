@@ -1,21 +1,23 @@
 package sk.vander.garwan;
 
-import android.app.Application;
-
 import javax.inject.Singleton;
 
 import dagger.Component;
 import sk.vander.garwan.data.DataModule;
-import sk.vander.garwan.data.MenuProvider;
-import sk.vander.garwan.ui.MainActivity;
 
 /**
  * Created by arashid on 21/06/16.
  */
 @Singleton
 @Component(modules = {AppModule.class, DataModule.class})
-public interface AppComponent {
-  void inject(MainActivity activity);
+public interface AppComponent extends AppGraph {
 
-  MenuProvider menuProvider();
+  final class Initializer {
+    static AppComponent init(App app) {
+      return DaggerAppComponent.builder()
+          .appModule(new AppModule(app))
+          .build();
+    }
+    private Initializer() {} // No instances.
+  }
 }

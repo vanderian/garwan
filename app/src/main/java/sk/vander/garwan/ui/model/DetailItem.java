@@ -15,12 +15,23 @@ public abstract class DetailItem {
   public abstract BigDecimal price();
   public abstract String size();
   public abstract long getId();
+  public abstract String addOnIds();
 
   public static DetailItem create(MealDao mealDao) {
-    return new AutoParcelGson_DetailItem(mealDao.getName(), mealDao.getServingSizeDao().getPrice(), mealDao.getServingSizeDao().getSize(), mealDao.getId());
+    return new AutoParcelGson_DetailItem(
+        mealDao.getName(),
+        mealDao.getServingSizeDao().getPrice(),
+        mealDao.getServingSizeDao().getSize(),
+        mealDao.getId(),
+        mealDao.getAddOnIds());
   }
 
   public static DetailItem create(AddOnDao addOnDao) {
-    return new AutoParcelGson_DetailItem(addOnDao.getName(), addOnDao.getServingSizeDao().getPrice(), addOnDao.getServingSizeDao().getSize(), addOnDao.getId());
+    return new AutoParcelGson_DetailItem(
+        addOnDao.getName(),
+        addOnDao.getServingSizeDao().getPrice(),
+        addOnDao.getServingSizeDao().getSize(),
+        addOnDao.getId(),
+        "");
   }
 }
