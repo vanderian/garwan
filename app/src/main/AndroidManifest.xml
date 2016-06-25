@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="sk.vander.garwan">
+    package="sk.vander.meals">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -38,7 +38,7 @@
             android:value="true"/>
         <meta-data
             android:name="DOMAIN_PACKAGE_NAME"
-            android:value="sk.vander.garwan.data.database.model"/>
+            android:value="sk.vander.meals.data.database.model"/>
 
     </application>
 

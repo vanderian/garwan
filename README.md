@@ -1,2 +1,2 @@
-# garwan
+# meals
 sample app just for demonstration

@@ -20,7 +20,7 @@ android {
     buildToolsVersion "24.0.0"
 
     defaultConfig {
-        applicationId "sk.vander.garwan"
+        applicationId "sk.vander.meals"
         minSdkVersion 15
         targetSdkVersion 24
         versionCode 1

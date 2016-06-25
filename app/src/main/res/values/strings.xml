@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">garwan</string>
+    <string name="app_name">Meals</string>
     <string name="label_main">Meals</string>
     <string name="label_detail">AddOns</string>
 </resources>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<sk.vander.garwan.ui.view.DetailItemView
+<sk.vander.meals.ui.view.DetailItemView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -40,4 +40,4 @@
         tools:text="name name name name name name name name name"
         />
 
-</sk.vander.garwan.ui.view.DetailItemView>
+</sk.vander.meals.ui.view.DetailItemView>
